@@ -4,6 +4,7 @@ using System.Linq;
 using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
+using BeaconTrackerApi.Model.In;
 using BeaconTrackerApi.Model.Out;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,14 +14,14 @@ namespace BeaconTrackerApi.Controllers
     [Route("[controller]")]
     public class LoginController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        [HttpPost]
+        public IActionResult Post([FromBody] LoginIn loginIn)
         {
             var loginOut = new LoginOut();
 
             try
             {
-                var user = new LoginDao().GetUsers("marcos", "marcos123");
+                var user = new LoginDao().GetUsers(loginIn.login, loginIn.password);
 
                 loginOut.status = Status.Sucess;
                 loginOut.message = "sucesso";

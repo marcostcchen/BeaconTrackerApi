@@ -21,7 +21,9 @@
         <e p="Roles.cs" t="Include" />
       </e>
       <e p="Model" t="Include">
-        <e p="In" t="Include" />
+        <e p="In" t="Include">
+          <e p="LoginIn.cs" t="Include" />
+        </e>
         <e p="Out" t="Include">
           <e p="LoginOut.cs" t="Include" />
         </e>
