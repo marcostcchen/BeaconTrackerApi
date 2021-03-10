@@ -8,7 +8,7 @@ using BeaconTrackerApi.Model;
 
 namespace BeaconTrackerApi.Database
 {
-    public class LoginDao
+    public class LoginDAO
     {
         public User GetUsers(string login, string password)
         {

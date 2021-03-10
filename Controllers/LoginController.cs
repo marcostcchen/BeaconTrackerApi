@@ -11,17 +11,18 @@ using Microsoft.AspNetCore.Mvc;
 namespace BeaconTrackerApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Produces("application/json")]
     public class LoginController : ControllerBase
     {
+        [Route("/api/efetuar-login")]
         [HttpPost]
-        public IActionResult Post([FromBody] LoginIn loginIn)
+        public IActionResult EfetuarLogin([FromBody] LoginIn loginIn)
         {
             var loginOut = new LoginOut();
 
             try
             {
-                var user = new LoginDao().GetUsers(loginIn.login, loginIn.password);
+                var user = new LoginDAO().GetUsers(loginIn.login, loginIn.password);
 
                 loginOut.status = Status.Sucess;
                 loginOut.message = "sucesso";
@@ -31,8 +32,8 @@ namespace BeaconTrackerApi.Controllers
             catch (Exception e)
             {
                 loginOut.status = Status.Error;
-                loginOut.message = "Error";
-                return Ok(loginOut);
+                loginOut.message = e.Message;
+                return Unauthorized(loginOut);
             }
         }
     }
