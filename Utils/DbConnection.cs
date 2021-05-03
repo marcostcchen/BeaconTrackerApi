@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-namespace BeaconTrackerApi.Database
+namespace BeaconTrackerApi.Utils
 {
     public class DbConnection
     {

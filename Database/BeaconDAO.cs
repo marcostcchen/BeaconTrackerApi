@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using BeaconTrackerApi.Model;
 using BeaconTrackerApi.Model.In;
+using BeaconTrackerApi.Utils;
 
 namespace BeaconTrackerApi.Database
 {
-    public class MeasureDAO
+    public class BeaconDAO
     {
-        public void InsertMeasure(MeasureIn measureIn)
+        public void InsertMeasure(SendRSSIBeaconIn beaconIn)
         {
             var db = new DbConnection();
-            var datetime = DateTime.Now;
             
-            foreach (var measure in measureIn.measures)
+            foreach (var beacon in beaconIn.beaconList)
             {
                 var cmd = new SqlCommand("[PR_Insert_Measure]", db.OpenConnection())
                     {CommandTimeout = 99999, CommandType = CommandType.StoredProcedure};
-                cmd.Parameters.AddWithValue("@idBeacon", measure.idBeacon);
-                cmd.Parameters.AddWithValue("@idUser", measure.idUser);
-                cmd.Parameters.AddWithValue("@RSSI", measure.RSSI);
-                cmd.Parameters.AddWithValue("@measureTime", datetime);
+                cmd.Parameters.AddWithValue("@idBeacon", beacon.idBeacon);
+                cmd.Parameters.AddWithValue("@idUser", beaconIn.idUser);
+                cmd.Parameters.AddWithValue("@RSSI", beacon.rssi);
                 cmd.ExecuteReader();
                 db.CloseConnection();    
             }

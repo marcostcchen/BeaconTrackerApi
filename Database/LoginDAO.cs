@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
+using BeaconTrackerApi.Utils;
 
 namespace BeaconTrackerApi.Database
 {
@@ -13,7 +14,7 @@ namespace BeaconTrackerApi.Database
         public User GetUsers(string login, string password)
         {
             var db = new DbConnection();
-            var cmd = new SqlCommand("[PR_Get_User]", db.OpenConnection())
+            var cmd = new SqlCommand("[PR_Efetuar_Login]", db.OpenConnection())
                 {CommandTimeout = 99999, CommandType = CommandType.StoredProcedure};
             cmd.Parameters.AddWithValue("@login", login);
             cmd.Parameters.AddWithValue("@password", password);

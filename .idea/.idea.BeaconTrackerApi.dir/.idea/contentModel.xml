@@ -11,26 +11,25 @@
       <e p="BeaconTrackerApi.csproj" t="IncludeRecursive" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="Controllers" t="Include">
+        <e p="BeaconController.cs" t="Include" />
         <e p="LoginController.cs" t="Include" />
-        <e p="MeasureController.cs" t="Include" />
       </e>
       <e p="Database" t="Include">
-        <e p="DbConnection.cs" t="Include" />
+        <e p="BeaconDAO.cs" t="Include" />
         <e p="LoginDAO.cs" t="Include" />
-        <e p="MeasureDAO.cs" t="Include" />
       </e>
       <e p="Enum" t="Include">
         <e p="Roles.cs" t="Include" />
       </e>
       <e p="Model" t="Include">
+        <e p="Beacon.cs" t="Include" />
         <e p="In" t="Include">
           <e p="LoginIn.cs" t="Include" />
-          <e p="MeasureIn.cs" t="Include" />
+          <e p="SendRSSIBeaconIn.cs" t="Include" />
         </e>
-        <e p="Measure.cs" t="Include" />
         <e p="Out" t="Include">
           <e p="LoginOut.cs" t="Include" />
-          <e p="MeasureOut.cs" t="Include" />
+          <e p="SendRSSIBeaconOut.cs" t="Include" />
         </e>
         <e p="User.cs" t="Include" />
       </e>
@@ -51,6 +50,9 @@
       </e>
       <e p="README.md" t="Include" />
       <e p="Startup.cs" t="Include" />
+      <e p="Utils" t="Include">
+        <e p="DbConnection.cs" t="Include" />
+      </e>
     </e>
   </component>
 </project>
