@@ -49,6 +49,10 @@
         </e>
       </e>
       <e p="README.md" t="Include" />
+      <e p="Services" t="Include">
+        <e p="TokenService.cs" t="Include" />
+      </e>
+      <e p="Settings.cs" t="Include" />
       <e p="Startup.cs" t="Include" />
       <e p="Utils" t="Include">
         <e p="DbConnection.cs" t="Include" />

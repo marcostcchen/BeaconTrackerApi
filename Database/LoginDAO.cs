@@ -20,7 +20,7 @@ namespace BeaconTrackerApi.Database
             cmd.Parameters.AddWithValue("@password", password);
             
             var reader = cmd.ExecuteReader();
-            if (!reader.HasRows) throw new SqlNullValueException("Não foi encontrado registros!");
+            if (!reader.HasRows) throw new SqlNullValueException("Login não encontrado!");
             reader.Read();
 
             var user = new User

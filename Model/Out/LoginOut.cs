@@ -6,6 +6,7 @@ namespace BeaconTrackerApi.Model.Out
     {
         public Status status { get; set; }
         public string message { get; set; }
+        public string token { get; set; }
         public User user { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model.In;
 using BeaconTrackerApi.Model.Out;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BeaconTrackerApi.Controllers
@@ -11,8 +12,9 @@ namespace BeaconTrackerApi.Controllers
     [Produces("application/json")]
     public class BeaconController : ControllerBase
     {
-        [Route("/api/send-rssi-beacon")]
         [HttpPost]
+        [Authorize]
+        [Route("/api/send-rssi-beacon")]
         public IActionResult RegistrarMedicao([FromBody] SendRSSIBeaconIn sendRSSIIn)
         {
             var sendRSSIBeaconOut = new SendRSSIBeaconOut();

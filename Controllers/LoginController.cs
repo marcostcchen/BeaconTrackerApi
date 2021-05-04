@@ -6,6 +6,8 @@ using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
 using BeaconTrackerApi.Model.In;
 using BeaconTrackerApi.Model.Out;
+using BeaconTrackerApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BeaconTrackerApi.Controllers
@@ -14,6 +16,7 @@ namespace BeaconTrackerApi.Controllers
     [Produces("application/json")]
     public class LoginController : ControllerBase
     {
+        [AllowAnonymous]
         [Route("/api/efetuar-login")]
         [HttpPost]
         public IActionResult EfetuarLogin([FromBody] LoginIn loginIn)
@@ -23,9 +26,10 @@ namespace BeaconTrackerApi.Controllers
             try
             {
                 var user = new LoginDAO().GetUsers(loginIn.login, loginIn.password);
-
+                
                 loginOut.status = Status.Sucess;
-                loginOut.message = "sucesso";
+                loginOut.token = TokenService.GenerateToken(user);
+                loginOut.message = "Login efetuado com sucesso";
                 loginOut.user = user;
                 return Ok(loginOut);
             }
@@ -33,7 +37,7 @@ namespace BeaconTrackerApi.Controllers
             {
                 loginOut.status = Status.Error;
                 loginOut.message = e.Message;
-                return Unauthorized(loginOut);
+                return NotFound(loginOut);
             }
         }
     }
