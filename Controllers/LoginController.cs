@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
-using BeaconTrackerApi.Model;
 using BeaconTrackerApi.Model.In;
 using BeaconTrackerApi.Model.Out;
 using BeaconTrackerApi.Services;
