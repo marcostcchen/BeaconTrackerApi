@@ -2,7 +2,8 @@
 {
     public enum Roles
     {
-        Admin
+        Admin,
+        Funcionario
     }
 
     public enum Status
@@ -10,5 +11,12 @@
         Sucess, 
         Error, 
         NotAuthorized
+    }
+
+    public enum DangerLevel
+    {
+        MuitoPerigoso,
+        Medio, 
+        BaixoPerigo
     }
 }

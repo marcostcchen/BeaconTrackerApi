@@ -34,7 +34,7 @@ namespace BeaconTrackerApi.Controllers
             {
                 loginOut.status = Status.Error;
                 loginOut.message = e.Message;
-                return NotFound(loginOut);
+                return Ok(loginOut);
             }
         }
     }

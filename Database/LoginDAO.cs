@@ -28,7 +28,7 @@ namespace BeaconTrackerApi.Database
                 idUser = Convert.ToInt32(reader["idUser"]),
                 login = reader["login"].ToString(),
                 name = reader["name"].ToString(),
-                role = (Roles) Convert.ToInt32(reader["role"]),
+                idRole = (Roles) Convert.ToInt32(reader["idRole"]),
             };
 
             db.CloseConnection();

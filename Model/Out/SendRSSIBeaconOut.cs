@@ -2,9 +2,7 @@
 
 namespace BeaconTrackerApi.Model.Out
 {
-    public class SendRSSIBeaconOut
+    public class SendRSSIBeaconOut: BaseOut
     {
-        public Status status { get; set; }
-        public string message { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace BeaconTrackerApi.Model
         public int idUser { get; set; }
         public string name { get; set; }
         public string login { get; set; }
-        public Roles role { get; set; }
+        public Roles idRole { get; set; }
     }
 }

@@ -2,10 +2,8 @@
 
 namespace BeaconTrackerApi.Model.Out
 {
-    public class LoginOut
+    public class LoginOut: BaseOut
     {
-        public Status status { get; set; }
-        public string message { get; set; }
         public string token { get; set; }
         public User user { get; set; }
     }

@@ -15,7 +15,7 @@ namespace BeaconTrackerApi.Database
             
             foreach (var beacon in beaconIn.beaconList)
             {
-                var cmd = new SqlCommand("[PR_Insert_Measure]", db.OpenConnection())
+                var cmd = new SqlCommand("[PR_Inserir_RSSI]", db.OpenConnection())
                     {CommandTimeout = 99999, CommandType = CommandType.StoredProcedure};
                 cmd.Parameters.AddWithValue("@idBeacon", beacon.idBeacon);
                 cmd.Parameters.AddWithValue("@idUser", beaconIn.idUser);
