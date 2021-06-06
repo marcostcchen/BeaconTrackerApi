@@ -9,8 +9,8 @@ namespace BeaconTrackerApi.Utils
 
         public SqlConnection OpenConnection()
         {
-            var builder = new SqlConnectionStringBuilder {DataSource = @"localhost\SQLEXPRESS01", UserID = "user", Password = "user", InitialCatalog = "beacontracker"};
-            // var builder = new SqlConnectionStringBuilder {DataSource = "beacontrackerdb.clmsc6yg9pqz.us-east-2.rds.amazonaws.com,1433", UserID = "admin", Password = "Natalia123", InitialCatalog = "beacontrackerdb"};
+            var builder = new SqlConnectionStringBuilder {DataSource = @"ec2-3-14-80-158.us-east-2.compute.amazonaws.com", UserID = "sa", Password = "Teste@132", InitialCatalog = "BeaconTracker"};
+            // var builder = new SqlConnectionStringBuilder {DataSource = @"localhost\SQLEXPRESS01", UserID = "user", Password = "user", InitialCatalog = "beacontracker"};
             _connection = new SqlConnection(builder.ConnectionString);
             if (_connection.State != ConnectionState.Open) _connection.Open();
             return _connection;

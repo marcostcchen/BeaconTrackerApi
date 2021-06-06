@@ -15,7 +15,7 @@ namespace BeaconTrackerApi.Database
             var db = new DbConnection();
             var cmd = new SqlCommand("[PR_Detalhes_Region]", db.OpenConnection())
                 {CommandTimeout = 99999, CommandType = CommandType.StoredProcedure};
-            cmd.Parameters.AddWithValue("@@idRegion", idRegion);
+            cmd.Parameters.AddWithValue("@idRegion", idRegion);
 
             var reader = cmd.ExecuteReader();
             if (!reader.HasRows) throw new SqlNullValueException("Região não encontrado!");
@@ -24,7 +24,7 @@ namespace BeaconTrackerApi.Database
             var region = new Region()
             {
                 idRegion = Convert.ToInt32(reader["idRegion"]),
-                nome = reader["nome"].ToString(),
+                name = reader["name"].ToString(),
                 description = reader["description"].ToString(),
                 avgTemperature = Convert.ToInt32(reader["avgTemperature"]),
                 dangerLevel = (DangerLevel) Convert.ToInt32(reader["dangerLevel"]),
