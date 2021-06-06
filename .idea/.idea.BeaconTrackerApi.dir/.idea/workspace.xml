@@ -22,13 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="">
+    <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="Api - ajustes">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/LoginDAO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Database/LoginDAO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/MapaDAO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Database/MapaDAO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/azureDb.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Region.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Region.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utils/DbConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/DbConnection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/In/SendRSSIBeaconIn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/In/SendRSSIBeaconIn.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +36,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C870CA06-9021-47A9-A402-5993CEEFDC2D/1E0/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/marco/source/repos/Poli/TCC/BeaconTrackerApi/Model/Region.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C870CA06-9021-47A9-A402-5993CEEFDC2D/5f/38a7db93/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -63,6 +60,7 @@
       <option value="$PROJECT_DIR$/Database/MapaDAO.cs" />
       <option value="$PROJECT_DIR$/Utils/DbConnection.cs" />
       <option value="$PROJECT_DIR$/Database/LoginDAO.cs" />
+      <option value="$PROJECT_DIR$/Model/In/SendRSSIBeaconIn.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pZdOdtQINPY2bUTt1UF8DS5xBB" />
@@ -137,7 +135,7 @@
       <workItem from="1621892480513" duration="596000" />
       <workItem from="1621894334490" duration="16000" />
       <workItem from="1622585420420" duration="1492000" />
-      <workItem from="1622983370392" duration="1577000" />
+      <workItem from="1622983370392" duration="2261000" />
     </task>
     <task id="LOCAL-00001" summary="Api - Connection to local machine done, basic structure done">
       <created>1615397787847</created>
@@ -195,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621795658587</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Api - ajustes">
+      <created>1622991618992</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1622991618992</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +514,8 @@
     <MESSAGE value="Api - bearer done" />
     <MESSAGE value="Api - Added swagger" />
     <MESSAGE value="MapaController - Detalhe regiao" />
-    <option name="LAST_COMMIT_MESSAGE" value="MapaController - Detalhe regiao" />
+    <MESSAGE value="Api - ajustes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Api - ajustes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

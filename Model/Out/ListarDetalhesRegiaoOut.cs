@@ -1,5 +1,5 @@
 ﻿
-namespace BeaconTrackerApi.Model.Out
+namespace BeaconTrackerApi.Model
 {
     public class ListarDetalhesRegiaoOut: BaseOut
     {

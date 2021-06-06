@@ -1,8 +1,7 @@
 ﻿using System;
 using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
-using BeaconTrackerApi.Model.In;
-using BeaconTrackerApi.Model.Out;
+using BeaconTrackerApi.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

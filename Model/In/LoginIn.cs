@@ -1,4 +1,4 @@
-﻿namespace BeaconTrackerApi.Model.In
+﻿namespace BeaconTrackerApi.Model
 {
     public class LoginIn
     {

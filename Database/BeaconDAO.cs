@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.SqlClient;
 using BeaconTrackerApi.Model;
-using BeaconTrackerApi.Model.In;
 using BeaconTrackerApi.Utils;
 
 namespace BeaconTrackerApi.Database
@@ -12,17 +11,18 @@ namespace BeaconTrackerApi.Database
         public void InsertMeasure(SendRSSIBeaconIn beaconIn)
         {
             var db = new DbConnection();
+
+            var cmd = new SqlCommand("[PR_Update_User_Location]", db.OpenConnection())
+                {CommandTimeout = 99999, CommandType = CommandType.StoredProcedure};
+            cmd.Parameters.AddWithValue("@idUser", beaconIn.idUser);
+            cmd.Parameters.AddWithValue("@RSSIBeaconId1", beaconIn.RSSIBeaconId1);
+            cmd.Parameters.AddWithValue("@RSSIBeaconId2", beaconIn.RSSIBeaconId2);
+            cmd.Parameters.AddWithValue("@RSSIBeaconId3", beaconIn.RSSIBeaconId3);
+            cmd.Parameters.AddWithValue("@measureTime", beaconIn.measureTime);
+            cmd.ExecuteReader();
             
-            foreach (var beacon in beaconIn.beaconList)
-            {
-                var cmd = new SqlCommand("[PR_Inserir_RSSI]", db.OpenConnection())
-                    {CommandTimeout = 99999, CommandType = CommandType.StoredProcedure};
-                cmd.Parameters.AddWithValue("@idBeacon", beacon.idBeacon);
-                cmd.Parameters.AddWithValue("@idUser", beaconIn.idUser);
-                cmd.Parameters.AddWithValue("@RSSI", beacon.rssi);
-                cmd.ExecuteReader();
-                db.CloseConnection();    
-            }
+            db.CloseConnection();
+            cmd.Dispose();
         }
     }
 }

@@ -1,6 +1,5 @@
-﻿using BeaconTrackerApi.Enum;
-
-namespace BeaconTrackerApi.Model.Out
+﻿
+namespace BeaconTrackerApi.Model
 {
     public class LoginOut: BaseOut
     {
