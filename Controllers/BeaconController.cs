@@ -20,7 +20,7 @@ namespace BeaconTrackerApi.Controllers
 
             try
             {
-                new BeaconDAO().InsertMeasure(sendRSSIIn);
+                // new BeaconDAO().InsertMeasure(sendRSSIIn);
                 sendRSSIBeaconOut.status = Status.Sucess;
                 sendRSSIBeaconOut.message = "Medicoes armazenadas com sucesso";
                 return Ok(sendRSSIBeaconOut);

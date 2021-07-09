@@ -10,8 +10,15 @@ namespace BeaconTrackerApi.Controllers
 {
     [ApiController]
     [Produces("application/json")]
-    public class LoginController : ControllerBase
+    public class UserController : ControllerBase
     {
+        private readonly UserService _userService;
+
+        public UserController(UserService userService)
+        {
+            _userService = userService;
+        }
+
         [AllowAnonymous]
         [Route("/api/efetuar-login")]
         [HttpPost]
@@ -21,12 +28,12 @@ namespace BeaconTrackerApi.Controllers
 
             try
             {
-                var user = new LoginDAO().GetUsers(loginIn.login, loginIn.password);
-                
+                // var user = new UserService().Get(loginIn.login, loginIn.password);
+
                 loginOut.status = Status.Sucess;
-                loginOut.token = TokenService.GenerateToken(user);
+                // loginOut.token = TokenService.GenerateToken(user);
                 loginOut.message = "Login efetuado com sucesso";
-                loginOut.user = user;
+                // loginOut.user = user;
                 return Ok(loginOut);
             }
             catch (Exception e)
@@ -35,6 +42,15 @@ namespace BeaconTrackerApi.Controllers
                 loginOut.message = e.Message;
                 return Ok(loginOut);
             }
+        }
+
+        [AllowAnonymous]
+        [Route("/api/teste-listar-usuarios")]
+        [HttpPost]
+        public IActionResult TesteListarUsuarios()
+        {
+            var usuarios = _userService.GetUsers();
+            return Ok(usuarios);
         }
     }
 }

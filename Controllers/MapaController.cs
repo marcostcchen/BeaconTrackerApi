@@ -25,8 +25,8 @@ namespace BeaconTrackerApi.Controllers
 
                 var idRegion = (int) listarDetalhesRegiaoIn.idRegion;
                 
-                var region = new MapaDAO().GetRegionDetail(idRegion);
-                listarDetalhesRegiaoOut.region = region;
+                // var region = new MapaDAO().GetRegionDetail(idRegion);
+                // listarDetalhesRegiaoOut.region = region;
                 listarDetalhesRegiaoOut.status = Status.Sucess;
                 listarDetalhesRegiaoOut.message = "Listagem de informacoes da regiao com sucesso";
                 return Ok(listarDetalhesRegiaoOut);

@@ -1,10 +1,13 @@
 using System.Text;
+using BeaconTrackerApi.Database.Settings;
+using BeaconTrackerApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BeaconTrackerApi
@@ -42,8 +45,13 @@ namespace BeaconTrackerApi
                         ValidateAudience = false,
                     };
                 });
-            
+
             services.AddSwaggerGen();
+
+            // requires using Microsoft.Extensions.Options
+            services.Configure<UserCollectionSettings>(Configuration.GetSection(nameof(UserCollectionSettings)));
+            services.AddSingleton<IUserCollectionSettings>(sp => sp.GetRequiredService<IOptions<UserCollectionSettings>>().Value);
+            services.AddSingleton<UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
