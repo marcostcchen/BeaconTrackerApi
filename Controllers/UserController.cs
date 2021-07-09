@@ -28,12 +28,25 @@ namespace BeaconTrackerApi.Controllers
 
             try
             {
-                // var user = new UserService().Get(loginIn.login, loginIn.password);
+                if (loginIn.login is null) throw new Exception("Campo login está vazio!");
+                if (loginIn.password is null) throw new Exception("Campo password está vazio!");
+
+                var listaUsuarios = _userService.GetUsers();
+                var userFound = listaUsuarios.Find(u => u.login == loginIn.login && u.password == loginIn.password);
+                if (userFound is null) throw new Exception("Usuário não encontrado!");
+                if (userFound.active == 0) throw new Exception("Usuário inativo!");
+
+                var userReturn = new User()
+                {
+                    idUser = userFound.idUser,
+                    name = userFound.name,
+                    idRole = userFound.idRole,
+                };
 
                 loginOut.status = Status.Sucess;
-                // loginOut.token = TokenService.GenerateToken(user);
+                loginOut.token = TokenService.GenerateToken(userReturn);
                 loginOut.message = "Login efetuado com sucesso";
-                // loginOut.user = user;
+                loginOut.user = userReturn;
                 return Ok(loginOut);
             }
             catch (Exception e)
@@ -42,15 +55,6 @@ namespace BeaconTrackerApi.Controllers
                 loginOut.message = e.Message;
                 return Ok(loginOut);
             }
-        }
-
-        [AllowAnonymous]
-        [Route("/api/teste-listar-usuarios")]
-        [HttpPost]
-        public IActionResult TesteListarUsuarios()
-        {
-            var usuarios = _userService.GetUsers();
-            return Ok(usuarios);
         }
     }
 }

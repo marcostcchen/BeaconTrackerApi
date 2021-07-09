@@ -25,9 +25,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="">
+    <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="Api - return to asp net core 3.1">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeaconTrackerApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BeaconTrackerApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/User.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,10 +77,10 @@
       <option value="$PROJECT_DIR$/Controllers/MapaController.cs" />
       <option value="$PROJECT_DIR$/Services/UserService.cs" />
       <option value="$PROJECT_DIR$/Controllers/LoginController.cs" />
-      <option value="$PROJECT_DIR$/Controllers/UserController.cs" />
       <option value="$PROJECT_DIR$/Services/TokenService.cs" />
-      <option value="$PROJECT_DIR$/Model/User.cs" />
       <option value="$PROJECT_DIR$/BeaconTrackerApi.csproj" />
+      <option value="$PROJECT_DIR$/Controllers/UserController.cs" />
+      <option value="$PROJECT_DIR$/Model/User.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pZdOdtQINPY2bUTt1UF8DS5xBB" />
@@ -159,7 +160,7 @@
       <workItem from="1625079959882" duration="2244000" />
       <workItem from="1625839591599" duration="3345000" />
       <workItem from="1625843511223" duration="125000" />
-      <workItem from="1625843664236" duration="321000" />
+      <workItem from="1625843664236" duration="2046000" />
     </task>
     <task id="LOCAL-00001" summary="Api - Connection to local machine done, basic structure done">
       <created>1615397787847</created>
@@ -238,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625842660708</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Api - return to asp net core 3.1">
+      <created>1625844011279</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1625844011279</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +563,8 @@
     <MESSAGE value="Api - ajustes" />
     <MESSAGE value="Api - WIP: map" />
     <MESSAGE value="Api - setup for mongodb" />
-    <option name="LAST_COMMIT_MESSAGE" value="Api - setup for mongodb" />
+    <MESSAGE value="Api - return to asp net core 3.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Api - return to asp net core 3.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

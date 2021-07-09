@@ -26,7 +26,9 @@ namespace BeaconTrackerApi
         {
             services.AddCors();
             services.AddControllers();
-
+            services.AddMvc()
+                .AddJsonOptions(options => { options.JsonSerializerOptions.IgnoreNullValues = true; });
+            
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
             services.AddAuthentication(x =>
                 {
