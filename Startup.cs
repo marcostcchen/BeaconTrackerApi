@@ -56,8 +56,6 @@ namespace BeaconTrackerApi
             
             services.AddSingleton<UserService>();
             services.AddSingleton<BeaconService>();
-            services.AddSingleton<UserBeaconRSSIService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

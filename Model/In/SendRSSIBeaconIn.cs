@@ -5,7 +5,7 @@ namespace BeaconTrackerApi.Model
 {
     public class SendRSSIBeaconIn
     {
-        public int idUser { get; set; }
+        public string idUser { get; set; }
         
         public int RSSIBeacon1 { get; set; } 
         public int RSSIBeacon2 { get; set; } 

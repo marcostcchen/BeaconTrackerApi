@@ -38,7 +38,7 @@ namespace BeaconTrackerApi.Controllers
 
                 var userReturn = new User()
                 {
-                    idUser = userFound.idUser,
+                    Id = userFound.Id,
                     name = userFound.name,
                     idRole = userFound.idRole,
                 };
@@ -54,6 +54,36 @@ namespace BeaconTrackerApi.Controllers
                 loginOut.status = Status.Error;
                 loginOut.message = e.Message;
                 return Ok(loginOut);
+            }
+        }
+        
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("/api/enviar-user-beacon-RSSI")]
+        public IActionResult RegistrarMedicao([FromBody] SendRSSIBeaconIn sendRSSIIn)
+        {
+            var sendRSSIBeaconOut = new SendRSSIBeaconOut();
+
+            try
+            {
+                var userBeaconRssi = new BeaconRSSI()
+                {
+                    RSSIBeaconId1 = sendRSSIIn.RSSIBeacon1,
+                    RSSIBeaconId2 = sendRSSIIn.RSSIBeacon2,
+                    RSSIBeaconId3 = sendRSSIIn.RSSIBeacon3,
+                    measureTime = DateTime.Now
+                };
+                    
+                _userService.UpdateUserRSSI(sendRSSIIn.idUser, userBeaconRssi);
+                sendRSSIBeaconOut.status = Status.Sucess;
+                sendRSSIBeaconOut.message = "Medicoes armazenadas com sucesso";
+                return Ok(sendRSSIBeaconOut);
+            }
+            catch (Exception e)
+            {
+                sendRSSIBeaconOut.status = Status.Error;
+                sendRSSIBeaconOut.message = e.Message;
+                return Ok(sendRSSIBeaconOut);   
             }
         }
     }

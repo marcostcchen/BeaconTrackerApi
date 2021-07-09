@@ -8,12 +8,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb858fde-e475-46fb-8ae4-8db8f8970f5e" name="Default Changelist" comment="Api - running send rssi beacon automation test">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="bb858fde-e475-46fb-8ae4-8db8f8970f5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeaconTrackerApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BeaconTrackerApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UserBeaconRSSIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserBeaconRSSIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/UserBeaconRSSI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BeaconRSSI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/UserBeaconRSSIService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/UserService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/appsettings.json" />
+      <option value="$PROJECT_DIR$/Model/UserBeaconRSSI.cs" />
+      <option value="$PROJECT_DIR$/Model/BeaconRSSI.cs" />
+      <option value="$PROJECT_DIR$/Model/User.cs" />
+      <option value="$PROJECT_DIR$/Services/UserService.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1pZI8zXq9l9KUpdBQpL2evbWHx1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -88,6 +98,7 @@
       <updated>1615384046966</updated>
       <workItem from="1615384074015" duration="183000" />
       <workItem from="1623111545485" duration="3915000" />
+      <workItem from="1625872811925" duration="792000" />
     </task>
     <servers />
   </component>
