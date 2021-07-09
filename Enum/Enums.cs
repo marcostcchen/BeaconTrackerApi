@@ -9,8 +9,7 @@
     public enum Status
     {
         Sucess, 
-        Error, 
-        NotAuthorized
+        Error
     }
 
     public enum DangerLevel

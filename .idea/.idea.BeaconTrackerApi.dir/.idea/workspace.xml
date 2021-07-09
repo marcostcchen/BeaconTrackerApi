@@ -25,10 +25,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="Api - return to asp net core 3.1">
+    <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Model/Out/ListarBeaconsOut.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Settings/BeaconCollectionSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/BeaconService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/BeaconTrackerApi/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/BeaconTrackerApi/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/BeaconTrackerApi/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/BeaconTrackerApi/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeaconTrackerApi.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/BeaconTrackerApi.csproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/BeaconController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/BeaconController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enum/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Enum/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +58,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/marco/source/repos/Poli/TCC/BeaconTrackerApi/Controllers/BeaconController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C870CA06-9021-47A9-A402-5993CEEFDC2D/1E0/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C870CA06-9021-47A9-A402-5993CEEFDC2D/5f/38a7db93/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -57,7 +68,6 @@
       <option value="$PROJECT_DIR$/chamadas.txt" />
       <option value="$PROJECT_DIR$/Funcionamento.md" />
       <option value="$PROJECT_DIR$/README.md" />
-      <option value="$PROJECT_DIR$/Enum/Enums.cs" />
       <option value="$PROJECT_DIR$/Model/Region.cs" />
       <option value="$PROJECT_DIR$/Database/MapaDAO.cs" />
       <option value="$PROJECT_DIR$/Database/LoginDAO.cs" />
@@ -70,17 +80,21 @@
       <option value="$PROJECT_DIR$/Model/Out/SendRSSIBeaconOut.cs" />
       <option value="$PROJECT_DIR$/Database/BeaconDAO.cs" />
       <option value="$PROJECT_DIR$/Utils/DbConnection.cs" />
-      <option value="$PROJECT_DIR$/appsettings.json" />
       <option value="$PROJECT_DIR$/Database/Settings/UserCollectionSettings.cs" />
-      <option value="$PROJECT_DIR$/Startup.cs" />
-      <option value="$PROJECT_DIR$/Controllers/BeaconController.cs" />
       <option value="$PROJECT_DIR$/Controllers/MapaController.cs" />
-      <option value="$PROJECT_DIR$/Services/UserService.cs" />
       <option value="$PROJECT_DIR$/Controllers/LoginController.cs" />
       <option value="$PROJECT_DIR$/Services/TokenService.cs" />
       <option value="$PROJECT_DIR$/BeaconTrackerApi.csproj" />
       <option value="$PROJECT_DIR$/Controllers/UserController.cs" />
       <option value="$PROJECT_DIR$/Model/User.cs" />
+      <option value="$PROJECT_DIR$/Enum/Enums.cs" />
+      <option value="$PROJECT_DIR$/Services/BeaconService.cs" />
+      <option value="$PROJECT_DIR$/Services/UserService.cs" />
+      <option value="$PROJECT_DIR$/Model/Settings/BeaconCollectionSettings.cs" />
+      <option value="$PROJECT_DIR$/Startup.cs" />
+      <option value="$PROJECT_DIR$/appsettings.json" />
+      <option value="$PROJECT_DIR$/Model/Out/ListarBeaconsOut.cs" />
+      <option value="$PROJECT_DIR$/Controllers/BeaconController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pZdOdtQINPY2bUTt1UF8DS5xBB" />
@@ -160,7 +174,8 @@
       <workItem from="1625079959882" duration="2244000" />
       <workItem from="1625839591599" duration="3345000" />
       <workItem from="1625843511223" duration="125000" />
-      <workItem from="1625843664236" duration="2046000" />
+      <workItem from="1625843664236" duration="3608000" />
+      <workItem from="1625851139339" duration="405000" />
     </task>
     <task id="LOCAL-00001" summary="Api - Connection to local machine done, basic structure done">
       <created>1615397787847</created>
@@ -246,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625844011279</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Api - login done">
+      <created>1625846815576</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1625846815576</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +586,8 @@
     <MESSAGE value="Api - WIP: map" />
     <MESSAGE value="Api - setup for mongodb" />
     <MESSAGE value="Api - return to asp net core 3.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Api - return to asp net core 3.1" />
+    <MESSAGE value="Api - login done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Api - login done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

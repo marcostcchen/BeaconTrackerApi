@@ -51,9 +51,12 @@ namespace BeaconTrackerApi
             services.AddSwaggerGen();
 
             // requires using Microsoft.Extensions.Options
-            services.Configure<UserCollectionSettings>(Configuration.GetSection(nameof(UserCollectionSettings)));
-            services.AddSingleton<IUserCollectionSettings>(sp => sp.GetRequiredService<IOptions<UserCollectionSettings>>().Value);
+            services.Configure<MongoCollectionSettings>(Configuration.GetSection(nameof(MongoCollectionSettings)));
+            services.AddSingleton<IMongoCollectionSettings>(sp => sp.GetRequiredService<IOptions<MongoCollectionSettings>>().Value);
+            
             services.AddSingleton<UserService>();
+            services.AddSingleton<BeaconService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

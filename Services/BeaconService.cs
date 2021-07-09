@@ -5,16 +5,16 @@ using MongoDB.Driver;
 
 namespace BeaconTrackerApi.Services
 {
-    public class UserService
+    public class BeaconService
     {
-        private readonly IMongoCollection<User> _user;
-        public UserService(IMongoCollectionSettings settings)
+        private readonly IMongoCollection<Beacon> _beacon;
+        public BeaconService(IMongoCollectionSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
-            _user = database.GetCollection<User>("User");
+            _beacon = database.GetCollection<Beacon>("Beacon");
         }
         
-        public List<User> GetUsers() => _user.Find(user => true).ToList();
+        public List<Beacon> ListarBeacons() => _beacon.Find(beacon => true).ToList();
     }
 }
