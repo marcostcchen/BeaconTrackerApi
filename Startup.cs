@@ -56,6 +56,7 @@ namespace BeaconTrackerApi
             
             services.AddSingleton<UserService>();
             services.AddSingleton<BeaconService>();
+            services.AddSingleton<UserBeaconRSSIService>();
 
         }
 

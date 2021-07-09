@@ -15,6 +15,6 @@ namespace BeaconTrackerApi.Services
             _beacon = database.GetCollection<Beacon>("Beacon");
         }
         
-        public List<Beacon> ListarBeacons() => _beacon.Find(beacon => true).ToList();
+        public IEnumerable<Beacon> ListarBeacons() => _beacon.Find(beacon => true).ToList();
     }
 }

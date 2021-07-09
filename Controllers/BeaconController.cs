@@ -4,6 +4,7 @@ using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
 using BeaconTrackerApi.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BeaconTrackerApi.Controllers
@@ -20,29 +21,7 @@ namespace BeaconTrackerApi.Controllers
         }
         
         [HttpPost]
-        [Authorize]
-        [Route("/api/send-rssi-beacon")]
-        public IActionResult RegistrarMedicao([FromBody] SendRSSIBeaconIn sendRSSIIn)
-        {
-            var sendRSSIBeaconOut = new SendRSSIBeaconOut();
-
-            try
-            {
-                // new BeaconDAO().InsertMeasure(sendRSSIIn);
-                sendRSSIBeaconOut.status = Status.Sucess;
-                sendRSSIBeaconOut.message = "Medicoes armazenadas com sucesso";
-                return Ok(sendRSSIBeaconOut);
-            }
-            catch (Exception e)
-            {
-                sendRSSIBeaconOut.status = Status.Error;
-                sendRSSIBeaconOut.message = e.Message;
-                return BadRequest(sendRSSIBeaconOut);   
-            }
-        }
-        
-        [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         [Route("/api/listar-beacons")]
         public IActionResult ListarBeacons()
         {
@@ -61,7 +40,7 @@ namespace BeaconTrackerApi.Controllers
             {
                 listarBeaconsOut.status = Status.Error;
                 listarBeaconsOut.message = e.Message;
-                return BadRequest(listarBeaconsOut);   
+                return Ok(listarBeaconsOut);   
             }
         }
     }
