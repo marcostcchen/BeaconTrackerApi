@@ -21,7 +21,7 @@ namespace BeaconTrackerApi.Services
         public void UpdateUserRSSI(string userId, BeaconRSSI beaconRssi)
         {
             var user = _user.Find(u => u.Id == userId).FirstOrDefault();
-            user.beaconsRssi.Add(beaconRssi);
+            user.beaconsRSSI.Add(beaconRssi);
             _user.ReplaceOne(user => user.Id == userId, user);
         }
     }

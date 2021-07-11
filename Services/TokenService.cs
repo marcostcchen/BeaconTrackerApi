@@ -18,7 +18,7 @@ namespace BeaconTrackerApi.Services
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, user.name),
-                    new Claim(ClaimTypes.Role, user.idRole.ToString())
+                    new Claim(ClaimTypes.Role, user.role.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(8),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

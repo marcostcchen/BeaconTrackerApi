@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace BeaconTrackerApi.Model
 {
+    [BsonIgnoreExtraElements]
     public class User
     {
         [BsonId]
@@ -14,7 +15,8 @@ namespace BeaconTrackerApi.Model
         public string login { get; set; }
         public string password { get; set; }
         public int? active { get; set; }
-        public Roles? idRole { get; set; }
-        public List<BeaconRSSI> beaconsRssi { get; set; }
+        public Roles? role { get; set; }
+        public List<BeaconRSSI> beaconsRSSI { get; set; }
+        public bool isWorking { get; set; }
     }
 }

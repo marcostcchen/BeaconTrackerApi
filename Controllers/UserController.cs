@@ -40,7 +40,7 @@ namespace BeaconTrackerApi.Controllers
                 {
                     Id = userFound.Id,
                     name = userFound.name,
-                    idRole = userFound.idRole,
+                    role = userFound.role
                 };
 
                 loginOut.status = Status.Sucess;
@@ -68,9 +68,9 @@ namespace BeaconTrackerApi.Controllers
             {
                 var userBeaconRssi = new BeaconRSSI()
                 {
-                    RSSIBeaconId1 = sendRSSIIn.RSSIBeacon1,
-                    RSSIBeaconId2 = sendRSSIIn.RSSIBeacon2,
-                    RSSIBeaconId3 = sendRSSIIn.RSSIBeacon3,
+                    RSSIBeaconId1 = sendRSSIIn.RSSIBeaconId1,
+                    RSSIBeaconId2 = sendRSSIIn.RSSIBeaconId2,
+                    RSSIBeaconId3 = sendRSSIIn.RSSIBeaconId3,
                     measureTime = DateTime.Now
                 };
                     
