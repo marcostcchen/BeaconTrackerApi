@@ -25,15 +25,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="">
+    <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="Api - Migration to MongoDB sucess">
+      <change afterPath="$PROJECT_DIR$/Controllers/RegionController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/In/MapLocationIn.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Out/MapLocationOut.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/RegionService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/BeaconTrackerApi/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/BeaconTrackerApi/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/BeaconTrackerApi/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/BeaconTrackerApi/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Beacon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Beacon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/BeaconRSSI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BeaconRSSI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Region.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Region.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +64,6 @@
       <option value="$PROJECT_DIR$/chamadas.txt" />
       <option value="$PROJECT_DIR$/Funcionamento.md" />
       <option value="$PROJECT_DIR$/README.md" />
-      <option value="$PROJECT_DIR$/Model/Region.cs" />
       <option value="$PROJECT_DIR$/Database/MapaDAO.cs" />
       <option value="$PROJECT_DIR$/Database/LoginDAO.cs" />
       <option value="$PROJECT_DIR$/Model/In/ListarDetalhesRegiaoIn.cs" />
@@ -92,7 +93,12 @@
       <option value="$PROJECT_DIR$/appsettings.json" />
       <option value="$PROJECT_DIR$/Model/Beacon.cs" />
       <option value="$PROJECT_DIR$/Model/User.cs" />
+      <option value="$PROJECT_DIR$/Model/Out/MapLocationOut.cs" />
       <option value="$PROJECT_DIR$/Services/UserService.cs" />
+      <option value="$PROJECT_DIR$/Model/Region.cs" />
+      <option value="$PROJECT_DIR$/Model/In/MapLocationIn.cs" />
+      <option value="$PROJECT_DIR$/Controllers/RegionController.cs" />
+      <option value="$PROJECT_DIR$/Services/RegionService.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pZdOdtQINPY2bUTt1UF8DS5xBB" />
@@ -175,6 +181,7 @@
       <workItem from="1625843664236" duration="3608000" />
       <workItem from="1625851139339" duration="5260000" />
       <workItem from="1626010179865" duration="1400000" />
+      <workItem from="1626012667636" duration="2429000" />
     </task>
     <task id="LOCAL-00001" summary="Api - Connection to local machine done, basic structure done">
       <created>1615397787847</created>
@@ -288,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625856968599</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Api - Migration to MongoDB sucess">
+      <created>1626012685781</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1626012685781</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,7 +624,8 @@
     <MESSAGE value="Api - unified mongo call" />
     <MESSAGE value="Api - added new mongoCollectionSettings" />
     <MESSAGE value="Api - enviar-user-beacon-rssi done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Api - enviar-user-beacon-rssi done" />
+    <MESSAGE value="Api - Migration to MongoDB sucess" />
+    <option name="LAST_COMMIT_MESSAGE" value="Api - Migration to MongoDB sucess" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

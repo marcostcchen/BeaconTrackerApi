@@ -22,7 +22,7 @@ namespace BeaconTrackerApi.Services
         {
             var user = _user.Find(u => u.Id == userId).FirstOrDefault();
             user.beaconsRSSI.Add(beaconRssi);
-            _user.ReplaceOne(user => user.Id == userId, user);
+            _user.ReplaceOne(u => u.Id == userId, user);
         }
     }
 }
