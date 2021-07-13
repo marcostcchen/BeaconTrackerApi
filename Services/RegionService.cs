@@ -17,6 +17,11 @@ namespace BeaconTrackerApi.Services
             _region = database.GetCollection<Region>("Region");
         }
 
+        public List<Region> GetRegions()
+        {
+            return _region.Find(r => true).ToList();
+        }
+
         public void UpdateLocationRSSI(string idRegion, BeaconRSSI beaconRssi)
         {
             beaconRssi.measureTime = DateTime.Now;
