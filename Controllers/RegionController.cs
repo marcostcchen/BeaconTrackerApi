@@ -89,6 +89,7 @@ namespace BeaconTrackerApi.Controllers
                         RSSIBeaconId1Avg = RSSIBeaconId1Avg,
                         RSSIBeaconId2Avg = RSSIBeaconId2Avg,
                         RSSIBeaconId3Avg = RSSIBeaconId3Avg,
+                        idBeaconMinRSSI = region.idBeaconMinRSSI
                     };
                     listaRegionsMap.Add(regionMap);
                 });

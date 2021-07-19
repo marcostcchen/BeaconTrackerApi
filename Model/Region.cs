@@ -16,5 +16,6 @@ namespace BeaconTrackerApi.Model
         public int maxStayTimeMinutes { get; set; }
         public int avgTemperature { get; set; }
         public List<BeaconRSSI> mapLocation { get; set; }
+        public int idBeaconMinRSSI { get; set; }
     }
 }

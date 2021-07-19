@@ -18,5 +18,6 @@ namespace BeaconTrackerApi.Model
         public float RSSIBeaconId1Avg { get; set; }
         public float RSSIBeaconId2Avg { get; set; }
         public float RSSIBeaconId3Avg { get; set; }
+        public int idBeaconMinRSSI { get; set; }
     }
 }

@@ -71,7 +71,8 @@ namespace BeaconTrackerApi.Controllers
                     RSSIBeaconId1 = sendRSSIIn.RSSIBeaconId1,
                     RSSIBeaconId2 = sendRSSIIn.RSSIBeaconId2,
                     RSSIBeaconId3 = sendRSSIIn.RSSIBeaconId3,
-                    measureTime = DateTime.Now
+                    measureTime = DateTime.Now,
+                    regionName = sendRSSIIn.regionName
                 };
                     
                 _userService.UpdateUserRSSI(sendRSSIIn.idUser, userBeaconRssi);
