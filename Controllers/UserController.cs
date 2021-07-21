@@ -56,7 +56,36 @@ namespace BeaconTrackerApi.Controllers
                 return Ok(loginOut);
             }
         }
-        
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("/api/start-working")]
+        public IActionResult StartWorking([FromBody] StartWorkingIn startWorkingIn)
+        {
+            var startWorkingOut = new BaseOut();
+
+            try
+            {
+                if (startWorkingIn is null) throw new Exception("Faltam parametros");
+                if (startWorkingIn.maxStayMinutes is null) throw new Exception("Faltam parametros");
+                if (startWorkingIn.userId is null) throw new Exception("Faltam parametros");
+
+                var userId = startWorkingIn.userId;
+                var maxStayMinutes = (int)startWorkingIn.maxStayMinutes;
+
+                _userService.UpdateUserStartWorking(userId, maxStayMinutes);
+                startWorkingOut.status = Status.Sucess;
+                startWorkingOut.message = "Usuário iniciado com sucesso!";
+                return Ok(startWorkingOut);
+            }
+            catch (Exception e)
+            {
+                startWorkingOut.status = Status.Error;
+                startWorkingOut.message = e.Message;
+                return Ok(startWorkingOut);
+            }
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [Route("/api/enviar-user-beacon-RSSI")]
@@ -74,7 +103,7 @@ namespace BeaconTrackerApi.Controllers
                     measureTime = DateTime.Now,
                     regionName = sendRSSIIn.regionName
                 };
-                    
+
                 _userService.UpdateUserRSSI(sendRSSIIn.idUser, userBeaconRssi);
                 sendRSSIBeaconOut.status = Status.Sucess;
                 sendRSSIBeaconOut.message = "Medicoes armazenadas com sucesso";
@@ -84,7 +113,40 @@ namespace BeaconTrackerApi.Controllers
             {
                 sendRSSIBeaconOut.status = Status.Error;
                 sendRSSIBeaconOut.message = e.Message;
-                return Ok(sendRSSIBeaconOut);   
+                return Ok(sendRSSIBeaconOut);
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("/api/listar-ultimas-localizacoes")]
+        public IActionResult ListarUltimasLocalizacoes()
+        {
+            var listarUsuariosOut = new ListarUsuariosOut();
+
+            try
+            {
+                var users = _userService.GetUsers();
+
+                users.ForEach(user =>
+                {
+                    user.password = null;
+                    user.active = null;
+                    user.login = null;
+                    user.role = null;
+                    user.beaconsRSSI = null;
+                });
+
+                listarUsuariosOut.listUsuarios = users;
+                listarUsuariosOut.status = Status.Sucess;
+                listarUsuariosOut.message = "Listagem de informacoes da regiao com sucesso";
+                return Ok(listarUsuariosOut);
+            }
+            catch (Exception e)
+            {
+                listarUsuariosOut.status = Status.Error;
+                listarUsuariosOut.message = e.Message;
+                return Ok(listarUsuariosOut);
             }
         }
     }

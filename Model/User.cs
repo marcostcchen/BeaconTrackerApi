@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BeaconTrackerApi.Enum;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -17,6 +18,9 @@ namespace BeaconTrackerApi.Model
         public int? active { get; set; }
         public Roles? role { get; set; }
         public List<BeaconRSSI> beaconsRSSI { get; set; }
+        public BeaconRSSI lastLocation { get; set; }
         public bool isWorking { get; set; }
+        public int? maxStayMinutes { get; set; }
+        public DateTime startWorkingTime { get; set; }
     }
 }
