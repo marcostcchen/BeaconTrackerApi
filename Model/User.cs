@@ -22,5 +22,6 @@ namespace BeaconTrackerApi.Model
         public bool isWorking { get; set; }
         public int? maxStayMinutes { get; set; }
         public DateTime startWorkingTime { get; set; }
+        public string userId_OneSignal { get; set; }
     }
 }

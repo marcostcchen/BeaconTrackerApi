@@ -38,6 +38,13 @@ namespace BeaconTrackerApi.Services
             user.startWorkingTime = DateTime.Now;
             _user.ReplaceOne(u => u.Id == userId, user);
         }
-        
+
+        public void UpdateUserIdOneSignal(string userId, string userId_OneSignal)
+        {
+            var user = _user.Find(u => u.Id == userId).FirstOrDefault();
+            user.userId_OneSignal = userId_OneSignal;
+            _user.ReplaceOne(u => u.Id == userId, user);
+        }
+
     }
 }

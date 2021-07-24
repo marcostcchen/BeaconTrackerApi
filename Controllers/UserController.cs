@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
@@ -35,6 +36,8 @@ namespace BeaconTrackerApi.Controllers
                 var userFound = listaUsuarios.Find(u => u.login == loginIn.login && u.password == loginIn.password);
                 if (userFound is null) throw new Exception("Usuário não encontrado!");
                 if (userFound.active == 0) throw new Exception("Usuário inativo!");
+
+                if(userFound.role == Roles.Funcionario) _userService.UpdateUserIdOneSignal(userFound.Id, loginIn.userId_OneSignal);
 
                 var userReturn = new User()
                 {
@@ -136,6 +139,8 @@ namespace BeaconTrackerApi.Controllers
                     user.role = null;
                     user.beaconsRSSI = null;
                 });
+
+                users = users.OrderByDescending(user => user.lastLocation.regionName).ToList();
 
                 listarUsuariosOut.listUsuarios = users;
                 listarUsuariosOut.status = Status.Sucess;

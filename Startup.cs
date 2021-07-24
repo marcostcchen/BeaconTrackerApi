@@ -55,6 +55,7 @@ namespace BeaconTrackerApi
             services.AddSingleton<IMongoCollectionSettings>(sp => sp.GetRequiredService<IOptions<MongoCollectionSettings>>().Value);
             
             services.AddSingleton<UserService>();
+            services.AddSingleton<NotificationService>();
             services.AddSingleton<BeaconService>();
             services.AddSingleton<RegionService>();
         }
