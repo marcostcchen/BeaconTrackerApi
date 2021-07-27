@@ -91,6 +91,84 @@ namespace BeaconTrackerApi.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [Route("/api/start-resting")]
+        public IActionResult StartResting([FromBody] StartRestingIn startRestingIn)
+        {
+            var startRestingOut = new BaseOut();
+
+            try
+            {
+                if (startRestingIn is null) throw new Exception("Faltam parametros");
+                if (startRestingIn.minRestMinutes is null) throw new Exception("Faltam parametros");
+                if (startRestingIn.userId is null) throw new Exception("Faltam parametros");
+
+                var userId = startRestingIn.userId;
+                var maxStayMinutes = (int)startRestingIn.minRestMinutes;
+
+                _userService.UpdateUserStartResting(userId, maxStayMinutes);
+                startRestingOut.status = Status.Sucess;
+                startRestingOut.message = "Usuário pausado com sucesso!";
+                return Ok(startRestingOut);
+            }
+            catch (Exception e)
+            {
+                startRestingOut.status = Status.Error;
+                startRestingOut.message = e.Message;
+                return Ok(startRestingOut);
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("/api/finish-working")]
+        public IActionResult FinishWorking([FromBody] FinishWorkingIn finishWorkingIn)
+        {
+            var finishWorkingOut = new BaseOut();
+
+            try
+            {
+                if (finishWorkingIn is null) throw new Exception("Faltam parametros");
+                if (finishWorkingIn.userId is null) throw new Exception("Faltam parametros");
+
+                var userId = finishWorkingIn.userId;
+                _userService.UpdateUserFinishWorking(userId);
+                finishWorkingOut.status = Status.Sucess;
+                finishWorkingOut.message = "Usuário finalizado com sucesso!";
+                return Ok(finishWorkingOut);
+            }
+            catch (Exception e)
+            {
+                finishWorkingOut.status = Status.Error;
+                finishWorkingOut.message = e.Message;
+                return Ok(finishWorkingOut);
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("/api/list-working-sessions")]
+        public IActionResult ListWorkingSessions()
+        {
+            var listWorkingSessionsOut = new ListWorkingSessionOut();
+
+            try
+            {
+                var usersWorkingSessions = _userService.GetWorkingSessions();
+                listWorkingSessionsOut.status = Status.Sucess;
+                listWorkingSessionsOut.usersWorkingSessions = usersWorkingSessions;
+                listWorkingSessionsOut.message = "Listagem de sessoes com sucesso!";
+                return Ok(listWorkingSessionsOut);
+            }
+            catch (Exception e)
+            {
+                listWorkingSessionsOut.status = Status.Error;
+                listWorkingSessionsOut.message = e.Message;
+                return Ok(listWorkingSessionsOut);
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
         [Route("/api/enviar-user-beacon-RSSI")]
         public IActionResult RegistrarMedicao([FromBody] SendRSSIBeaconIn sendRSSIIn)
         {
