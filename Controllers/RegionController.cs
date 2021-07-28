@@ -20,7 +20,7 @@ namespace BeaconTrackerApi.Controllers
             _regionService = regionService;
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/atualizar-map-location")]
         [HttpPost]
         public IActionResult AtualizarMapLocation([FromBody] MapLocationIn mapLocationIn)
@@ -49,7 +49,7 @@ namespace BeaconTrackerApi.Controllers
         }
 
 
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/listar-regions-map")]
         [HttpPost]
         public IActionResult ListarRegions()

@@ -21,7 +21,7 @@ namespace BeaconTrackerApi.Controllers
         }
         
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/listar-beacons")]
         public IActionResult ListarBeacons()
         {

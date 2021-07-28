@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Text.Json;
 using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
@@ -19,9 +23,9 @@ namespace BeaconTrackerApi.Controllers
         {
             _notificationService = notificationService;
         }
-        
+
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/listar-notificacoes")]
         public IActionResult ListarNotificacoes()
         {
@@ -40,19 +44,54 @@ namespace BeaconTrackerApi.Controllers
             {
                 listarNotificacoesOut.status = Status.Error;
                 listarNotificacoesOut.message = e.Message;
-                return Ok(listarNotificacoesOut);   
+                return Ok(listarNotificacoesOut);
             }
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        [Route("/api/inserir-notificacao")]
+        [Authorize]
+        [Route("/api/enviar-notificacao")]
         public IActionResult InserirNotificacao(InserirNotificacaoIn inserirNotificacaoIn)
         {
             var inserirNotificacaoOut = new BaseOut();
 
             try
             {
+                var request = WebRequest.Create("https://onesignal.com/api/v1/notifications") as HttpWebRequest;
+                request.KeepAlive = true;
+                request.Method = "POST";
+                request.ContentType = "application/json; charset=utf-8";
+                request.Headers.Add("authorization", "Basic YmM4ZDVjZDAtOTM1YS00ZjJlLWI3OTMtZjUyMWYxNjcxMWRm");
+
+                var obj = new
+                {
+                    app_id = "b3e53c7e-4779-4ec1-b23c-d2ebd098a66b",
+                    include_player_ids = new string[] { inserirNotificacaoIn.userId_OneSignal },
+                    data = new { description = "Enviar Notificacao" },
+                    headings = new { en = inserirNotificacaoIn.titulo, pt = inserirNotificacaoIn.titulo },
+                    contents = new { en = inserirNotificacaoIn.descricao, pt = inserirNotificacaoIn.descricao }
+                };
+
+                var param = JsonSerializer.Serialize(obj);
+                byte[] byteArray = Encoding.UTF8.GetBytes(param);
+
+                string responseContent = null;
+
+                using (var writer = request.GetRequestStream())
+                {
+                    writer.Write(byteArray, 0, byteArray.Length);
+                }
+
+                using (var response = request.GetResponse() as HttpWebResponse)
+                {
+                    using (var reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        responseContent = reader.ReadToEnd();
+                    }
+                }
+
+                if (responseContent is null) throw new Exception("Não foi possível enviar a notificação!");
+
                 var notification = new Notification()
                 {
                     userId_OneSignal = inserirNotificacaoIn.userId_OneSignal,

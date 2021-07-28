@@ -61,7 +61,7 @@ namespace BeaconTrackerApi.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/start-working")]
         public IActionResult StartWorking([FromBody] StartWorkingIn startWorkingIn)
         {
@@ -90,7 +90,7 @@ namespace BeaconTrackerApi.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/start-resting")]
         public IActionResult StartResting([FromBody] StartRestingIn startRestingIn)
         {
@@ -119,7 +119,7 @@ namespace BeaconTrackerApi.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/finish-working")]
         public IActionResult FinishWorking([FromBody] FinishWorkingIn finishWorkingIn)
         {
@@ -145,7 +145,7 @@ namespace BeaconTrackerApi.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/list-working-sessions")]
         public IActionResult ListWorkingSessions()
         {
@@ -168,7 +168,7 @@ namespace BeaconTrackerApi.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [Route("/api/enviar-user-beacon-RSSI")]
         public IActionResult RegistrarMedicao([FromBody] SendRSSIBeaconIn sendRSSIIn)
         {
