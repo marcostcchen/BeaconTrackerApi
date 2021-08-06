@@ -111,7 +111,7 @@ namespace BeaconTrackerApi.Services
             users.ForEach(user =>
             {
                 if (user.workSessions is null) return;
-                var listWorkSessions = user.workSessions.Skip(Math.Max(0, user.workSessions.Count - 10));
+                var listWorkSessions = user.workSessions.OrderByDescending(workSession => workSession.startWorkingTime);
 
                 var userWorkSession = new UserWorkSession()
                 {
@@ -120,6 +120,7 @@ namespace BeaconTrackerApi.Services
                 };
                 usersWorkSessions.Add(userWorkSession);
             });
+
             return usersWorkSessions;
         }
     }

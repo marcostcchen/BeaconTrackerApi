@@ -85,6 +85,7 @@ namespace BeaconTrackerApi.Controllers
                         description = region.description,
                         dangerLevel = region.dangerLevel,
                         maxStayTimeMinutes = region.maxStayTimeMinutes,
+                        minRestMinutes =region.minRestMinutes,
                         avgTemperature = region.avgTemperature,
                         RSSIBeaconId1Avg = RSSIBeaconId1Avg,
                         RSSIBeaconId2Avg = RSSIBeaconId2Avg,

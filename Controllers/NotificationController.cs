@@ -10,6 +10,7 @@ using BeaconTrackerApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace BeaconTrackerApi.Controllers
 {
@@ -69,7 +70,9 @@ namespace BeaconTrackerApi.Controllers
                     include_player_ids = new string[] { inserirNotificacaoIn.userId_OneSignal },
                     data = new { description = "Enviar Notificacao" },
                     headings = new { en = inserirNotificacaoIn.titulo, pt = inserirNotificacaoIn.titulo },
-                    contents = new { en = inserirNotificacaoIn.descricao, pt = inserirNotificacaoIn.descricao }
+                    contents = new { en = inserirNotificacaoIn.descricao, pt = inserirNotificacaoIn.descricao },
+                    small_icon = "ic_stat_onesignal_default",
+                    large_icon = "ic_stat_onesignal_default"
                 };
 
                 var param = JsonSerializer.Serialize(obj);
@@ -112,6 +115,27 @@ namespace BeaconTrackerApi.Controllers
                 inserirNotificacaoOut.status = Status.Error;
                 inserirNotificacaoOut.message = e.Message;
                 return Ok(inserirNotificacaoOut);
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("/api/listar-notificacoes-usuario")]
+        public IActionResult ListarNotificacoesUsuarios(string name)
+        {
+            var listarNotificacoesOut = new ListarNotificacoesOut();
+
+            try
+            {
+                var notifications = _notificationService.GetNotifications().Where(notif => notif.nome == name);
+                listarNotificacoesOut.listaNotificacoes = notifications;
+                return Ok(listarNotificacoesOut);
+            }
+            catch (Exception e)
+            {
+                listarNotificacoesOut.status = Status.Error;
+                listarNotificacoesOut.message = e.Message;
+                return Ok(listarNotificacoesOut);
             }
         }
     }

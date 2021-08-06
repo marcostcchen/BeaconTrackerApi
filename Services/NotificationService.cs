@@ -22,7 +22,7 @@ namespace BeaconTrackerApi.Services
         {
             var notifications = _notification
                 .Find(notification => true)
-                .Limit(10)
+                .Limit(30)
                 .ToList()
                 .OrderByDescending(notification => notification.horaEnvio);
             return notifications;
