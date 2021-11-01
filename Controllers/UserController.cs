@@ -113,37 +113,6 @@ namespace BeaconTrackerApi.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("/api/enviar-user-beacon-RSSI")]
-        public IActionResult RegistrarMedicao([FromBody] SendRSSIBeaconIn sendRSSIIn)
-        {
-            var sendRSSIBeaconOut = new SendRSSIBeaconOut();
-
-            try
-            {
-                var userBeaconRssi = new BeaconRSSI()
-                {
-                    RSSIBeaconId1 = sendRSSIIn.RSSIBeaconId1,
-                    RSSIBeaconId2 = sendRSSIIn.RSSIBeaconId2,
-                    RSSIBeaconId3 = sendRSSIIn.RSSIBeaconId3,
-                    measureTime = DateTime.Now,
-                    regionName = sendRSSIIn.regionName
-                };
-
-                _userService.UpdateUserRSSI(sendRSSIIn.idUser, userBeaconRssi);
-                sendRSSIBeaconOut.status = Status.Sucess;
-                sendRSSIBeaconOut.message = "Medicoes armazenadas com sucesso";
-                return Ok(sendRSSIBeaconOut);
-            }
-            catch (Exception e)
-            {
-                sendRSSIBeaconOut.status = Status.Error;
-                sendRSSIBeaconOut.message = e.Message;
-                return Ok(sendRSSIBeaconOut);
-            }
-        }
-
-        [HttpPost]
-        [Authorize]
         [Route("/api/listar-ultimas-localizacoes")]
         public IActionResult ListarUltimasLocalizacoes()
         {

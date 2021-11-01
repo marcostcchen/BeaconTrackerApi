@@ -30,10 +30,10 @@ namespace BeaconTrackerApi.Controllers
             try
             {
                 if (mapLocationIn.idRegion is null) throw new Exception("Faltam parametros! idRegion");
-                if (mapLocationIn.beaconRssi is null) throw new Exception("Faltam parametros! beaconRssi");
+                if (mapLocationIn.beaconsRssi is null) throw new Exception("Faltam parametros! beaconsRssi");
 
                 var idRegion = mapLocationIn.idRegion;
-                var beaconRssi = mapLocationIn.beaconRssi;
+                var beaconRssi = mapLocationIn.beaconsRssi;
                 _regionService.UpdateLocationRSSI(idRegion, beaconRssi);
                 
                 mapLocationOut.status = Status.Sucess;

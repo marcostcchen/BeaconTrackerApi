@@ -24,11 +24,11 @@ namespace BeaconTrackerApi.Services
             return users;
         }
 
-        public void UpdateUserRSSI(string userId, BeaconRSSI beaconRssi)
+        public void UpdateUserRSSI(string userId, BeaconsRSSI beaconsRssi)
         {
             var user = _user.Find(u => u.Id == userId).FirstOrDefault();
-            user.beaconsRSSI.Add(beaconRssi);
-            user.lastLocation = beaconRssi;
+            user.beaconsRSSI.Add(beaconsRssi);
+            user.lastLocation = beaconsRssi;
             _user.ReplaceOne(u => u.Id == userId, user);
         }
 

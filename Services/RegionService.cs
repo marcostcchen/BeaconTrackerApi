@@ -22,32 +22,32 @@ namespace BeaconTrackerApi.Services
             return _region.Find(r => true).ToList();
         }
 
-        public void UpdateLocationRSSI(string idRegion, BeaconRSSI beaconRssi)
+        public void UpdateLocationRSSI(string idRegion, BeaconsRSSI beaconsRssi)
         {
-            beaconRssi.measureTime = DateTime.Now;
+            beaconsRssi.measureTime = DateTime.Now;
 
             //verifica se tem regiao com msm rssi, caso sim remove
             var regions = _region.Find(r => true).ToList();
             var regionsRepeated = regions.FindAll(region =>
             {
-                var regionFound = region.mapLocation.Find(map => isSameLocation(map, beaconRssi));
+                var regionFound = region.mapLocation.Find(map => isSameLocation(map, beaconsRssi));
                 return regionFound != null;
             });
-            regionsRepeated?.ForEach(r => r.mapLocation.RemoveAll(map => isSameLocation(map, beaconRssi)));
+            regionsRepeated?.ForEach(r => r.mapLocation.RemoveAll(map => isSameLocation(map, beaconsRssi)));
             regionsRepeated.ForEach(rp => _region.ReplaceOne(r => r.Id == rp.Id, rp));
 
             //inserir novo rssi 
             var region = _region.Find(r => r.Id == idRegion).FirstOrDefault();
-            region.mapLocation.Add(beaconRssi);
+            region.mapLocation.Add(beaconsRssi);
             _region.ReplaceOne(r => r.Id == idRegion, region);
         }
 
-        private bool isSameLocation(BeaconRSSI beaconRSSI, BeaconRSSI matchBeaconRssi)
+        private bool isSameLocation(BeaconsRSSI beaconsRssi, BeaconsRSSI matchBeaconsRssi)
         {
             return
-                 beaconRSSI.RSSIBeaconId1 == matchBeaconRssi.RSSIBeaconId1 &&
-                 beaconRSSI.RSSIBeaconId2 == matchBeaconRssi.RSSIBeaconId2 &&
-                 beaconRSSI.RSSIBeaconId3 == matchBeaconRssi.RSSIBeaconId3;
+                 beaconsRssi.RSSIBeaconId1 == matchBeaconsRssi.RSSIBeaconId1 &&
+                 beaconsRssi.RSSIBeaconId2 == matchBeaconsRssi.RSSIBeaconId2 &&
+                 beaconsRssi.RSSIBeaconId3 == matchBeaconsRssi.RSSIBeaconId3;
         }
     }
 }

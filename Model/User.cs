@@ -17,8 +17,6 @@ namespace BeaconTrackerApi.Model
         public string password { get; set; }
         public int? active { get; set; }
         public Roles? role { get; set; }
-        public List<BeaconRSSI> beaconsRSSI { get; set; }
-        public BeaconRSSI lastLocation { get; set; }
         public string userId_OneSignal { get; set; }
         public List<WorkSession> workSessions {get;set;}
     }

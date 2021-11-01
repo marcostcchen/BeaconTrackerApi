@@ -11,8 +11,8 @@ namespace BeaconTrackerApi.Model
     public class WorkSession
     {
         public string nome { get; set; }
-        public string regionName { get; set; }
         public WorkingStatus status { get; set; }
+        public BeaconsRSSI beaconsRssi { get; set; }
         public DateTime timestamp { get; set; }
     }
 }
