@@ -1,25 +1,13 @@
-# Beacon Tracker
-Descricao do funcionamento do sistema
-###Enviar notificacao para o app
-    a. Admin aciona funcao da Api
-    b. Chamar one signal enviar msg para o app
-    c. App recebe notificacao
+# Beacon Tracker API
 
-###Listar mapeamento frigorifico
-    a. Puxar da Api os parametros de limites do frigorifico
-    b. Puxar a cada x tempo os dados do stream do Kafka (live)
-    c. Colocar cada pessoa no seu respectivo lugar (tabela)
+.NET 5 with Swagger
 
-###Listar historico usuario
-    a. Chamar do bd o historico
+Api URL: https://api.beacontracker.software/index.html
 
-###Solicitar entrada na regiao
-    a. Solicitar entrada no lab (App)
-    b. Inscrever nova pessoa no kafka
-    c. Iniciar contagem de tempo para a regiao entrado
-    d. Notificar caso ultrapassar do tempo maximo do lugar
+Running with MongoDB Atlas Shared database
 
-###Enviar RSSI
-    a. Rotina de envio de RSSI com nome da pessoa, producer (App pro Kafka)
-    b. Mantem a stream
-    c. Fazer upload no banco de dados periodicamente
+Deploy on AWS EC2  
+
+Integration with One Signal API service
+
+<img width="1511" alt="Screen Shot 2021-10-04 at 21 53 16" src="https://user-images.githubusercontent.com/22487037/135943715-e88a926a-25b0-46a2-b824-abff6389f6c9.png">
