@@ -19,13 +19,6 @@ namespace BeaconTrackerApi.Model
         public Roles? role { get; set; }
         public List<BeaconRSSI> beaconsRSSI { get; set; }
         public BeaconRSSI lastLocation { get; set; }
-        public bool isWorking { get; set; }
-        public bool isResting { get; set; }
-
-        public int? maxStayMinutes { get; set; }
-        public int? minRestMinutes { get; set; }
-        public DateTime? startWorkingTime { get; set; }
-        public DateTime? startRestingTime { get; set; }
         public string userId_OneSignal { get; set; }
         public List<WorkSession> workSessions {get;set;}
     }

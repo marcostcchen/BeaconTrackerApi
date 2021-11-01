@@ -18,6 +18,7 @@ namespace BeaconTrackerApi.Services
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, user.name),
+                    new Claim(ClaimTypes.Sid, user.Id),
                     new Claim(ClaimTypes.Role, user.role.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(8),

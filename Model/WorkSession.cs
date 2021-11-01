@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BeaconTrackerApi.Enum;
 
 namespace BeaconTrackerApi.Model
 {
@@ -11,10 +12,7 @@ namespace BeaconTrackerApi.Model
     {
         public string nome { get; set; }
         public string regionName { get; set; }
-        public int? maxStayMinutes { get; set; }
-        public int? minRestMinutes { get; set; }
-        public DateTime? startWorkingTime { get; set; }
-        public DateTime? startRestingTime { get; set; }
-        public DateTime? finishRestingTime { get; set; }
+        public WorkingStatus status { get; set; }
+        public DateTime timestamp { get; set; }
     }
 }

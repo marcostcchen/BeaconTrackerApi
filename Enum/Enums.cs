@@ -18,4 +18,11 @@
         Medio, 
         BaixoPerigo
     }
+
+    public enum WorkingStatus
+    {
+        Working,
+        Resting,
+        Finished
+    }
 }

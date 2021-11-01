@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Claims;
 using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
@@ -62,23 +63,21 @@ namespace BeaconTrackerApi.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("/api/start-working")]
-        public IActionResult StartWorking([FromBody] StartWorkingIn startWorkingIn)
+        [Route("/api/create-work-session")]
+        public IActionResult StartWorking([FromBody] CreateWorkSessionIn createWorkSessionIn)
         {
             var startWorkingOut = new BaseOut();
 
             try
             {
-                if (startWorkingIn is null) throw new Exception("Faltam parametros");
-                if (startWorkingIn.maxStayMinutes is null) throw new Exception("Faltam parametros");
-                if (startWorkingIn.userId is null) throw new Exception("Faltam parametros");
+                if (createWorkSessionIn is null) throw new Exception("Faltam parametros");
 
-                var userId = startWorkingIn.userId;
-                var maxStayMinutes = (int)startWorkingIn.maxStayMinutes;
+                var userId = createWorkSessionIn.userId;
+                var workSession = createWorkSessionIn.workSession;
 
-                _userService.UpdateUserStartWorking(userId, maxStayMinutes);
+                _userService.CreateWorkSession(userId, workSession);
                 startWorkingOut.status = Status.Sucess;
-                startWorkingOut.message = "Usuário iniciado com sucesso!";
+                startWorkingOut.message = "Work Session criado com sucesso!";
                 return Ok(startWorkingOut);
             }
             catch (Exception e)
@@ -86,61 +85,6 @@ namespace BeaconTrackerApi.Controllers
                 startWorkingOut.status = Status.Error;
                 startWorkingOut.message = e.Message;
                 return Ok(startWorkingOut);
-            }
-        }
-
-        [HttpPost]
-        [Authorize]
-        [Route("/api/start-resting")]
-        public IActionResult StartResting([FromBody] StartRestingIn startRestingIn)
-        {
-            var startRestingOut = new BaseOut();
-
-            try
-            {
-                if (startRestingIn is null) throw new Exception("Faltam parametros");
-                if (startRestingIn.minRestMinutes is null) throw new Exception("Faltam parametros");
-                if (startRestingIn.userId is null) throw new Exception("Faltam parametros");
-
-                var userId = startRestingIn.userId;
-                var maxStayMinutes = (int)startRestingIn.minRestMinutes;
-
-                _userService.UpdateUserStartResting(userId, maxStayMinutes);
-                startRestingOut.status = Status.Sucess;
-                startRestingOut.message = "Usuário pausado com sucesso!";
-                return Ok(startRestingOut);
-            }
-            catch (Exception e)
-            {
-                startRestingOut.status = Status.Error;
-                startRestingOut.message = e.Message;
-                return Ok(startRestingOut);
-            }
-        }
-
-        [HttpPost]
-        [Authorize]
-        [Route("/api/finish-working")]
-        public IActionResult FinishWorking([FromBody] FinishWorkingIn finishWorkingIn)
-        {
-            var finishWorkingOut = new BaseOut();
-
-            try
-            {
-                if (finishWorkingIn is null) throw new Exception("Faltam parametros");
-                if (finishWorkingIn.userId is null) throw new Exception("Faltam parametros");
-
-                var userId = finishWorkingIn.userId;
-                _userService.UpdateUserFinishWorking(userId);
-                finishWorkingOut.status = Status.Sucess;
-                finishWorkingOut.message = "Usuário finalizado com sucesso!";
-                return Ok(finishWorkingOut);
-            }
-            catch (Exception e)
-            {
-                finishWorkingOut.status = Status.Error;
-                finishWorkingOut.message = e.Message;
-                return Ok(finishWorkingOut);
             }
         }
 

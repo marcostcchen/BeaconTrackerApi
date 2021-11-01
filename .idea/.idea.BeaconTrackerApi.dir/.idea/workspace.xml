@@ -26,8 +26,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fd9fdb7-5f30-4fe8-8382-484101dcb577" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Model/In/CreateWorkSessionIn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeaconTrackerApi.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/BeaconTrackerApi/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/BeaconTrackerApi/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/BeaconTrackerApi/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/BeaconTrackerApi/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enum/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Enum/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/In/StartWorkingIn.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/WorkSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Model/WorkSession.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/TokenService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/UserService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,10 +78,7 @@
       <option value="$PROJECT_DIR$/Database/Settings/UserCollectionSettings.cs" />
       <option value="$PROJECT_DIR$/Controllers/MapaController.cs" />
       <option value="$PROJECT_DIR$/Controllers/LoginController.cs" />
-      <option value="$PROJECT_DIR$/Services/TokenService.cs" />
       <option value="$PROJECT_DIR$/BeaconTrackerApi.csproj" />
-      <option value="$PROJECT_DIR$/Controllers/UserController.cs" />
-      <option value="$PROJECT_DIR$/Enum/Enums.cs" />
       <option value="$PROJECT_DIR$/Model/Settings/BeaconCollectionSettings.cs" />
       <option value="$PROJECT_DIR$/Model/Out/ListarBeaconsOut.cs" />
       <option value="$PROJECT_DIR$/Services/BeaconService.cs" />
@@ -84,13 +90,18 @@
       <option value="$PROJECT_DIR$/Controllers/UserBeaconRSSIController.cs" />
       <option value="$PROJECT_DIR$/appsettings.json" />
       <option value="$PROJECT_DIR$/Model/Beacon.cs" />
-      <option value="$PROJECT_DIR$/Model/User.cs" />
       <option value="$PROJECT_DIR$/Model/Out/MapLocationOut.cs" />
-      <option value="$PROJECT_DIR$/Services/UserService.cs" />
       <option value="$PROJECT_DIR$/Model/Region.cs" />
       <option value="$PROJECT_DIR$/Model/In/MapLocationIn.cs" />
       <option value="$PROJECT_DIR$/Controllers/RegionController.cs" />
       <option value="$PROJECT_DIR$/Services/RegionService.cs" />
+      <option value="$PROJECT_DIR$/Enum/Enums.cs" />
+      <option value="$PROJECT_DIR$/Model/WorkSession.cs" />
+      <option value="$PROJECT_DIR$/Services/TokenService.cs" />
+      <option value="$PROJECT_DIR$/Model/In/CreateWorkSessionIn.cs" />
+      <option value="$PROJECT_DIR$/Controllers/UserController.cs" />
+      <option value="$PROJECT_DIR$/Model/User.cs" />
+      <option value="$PROJECT_DIR$/Services/UserService.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pZdOdtQINPY2bUTt1UF8DS5xBB" />
@@ -175,6 +186,8 @@
       <workItem from="1626010179865" duration="1400000" />
       <workItem from="1626012667636" duration="3031000" />
       <workItem from="1626204548295" duration="14000" />
+      <workItem from="1628282130767" duration="776000" />
+      <workItem from="1635802564491" duration="1213000" />
     </task>
     <task id="LOCAL-00001" summary="Api - Connection to local machine done, basic structure done">
       <created>1615397787847</created>
@@ -302,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626016940258</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Api - listar notificacoes usuario">
+      <created>1628282154858</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1628282154858</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -626,7 +646,8 @@
     <MESSAGE value="Api - enviar-user-beacon-rssi done" />
     <MESSAGE value="Api - Migration to MongoDB sucess" />
     <MESSAGE value="Api - Atualizar-map-location" />
-    <option name="LAST_COMMIT_MESSAGE" value="Api - Atualizar-map-location" />
+    <MESSAGE value="Api - listar notificacoes usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Api - listar notificacoes usuario" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
