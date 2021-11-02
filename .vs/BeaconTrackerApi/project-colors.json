@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "40128e8a-854b-4086-bcbf-2b0b586ca2c8": {
+      "ProjectGuid": "40128e8a-854b-4086-bcbf-2b0b586ca2c8",
+      "DisplayName": "BeaconTrackerApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

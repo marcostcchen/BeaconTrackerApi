@@ -25,7 +25,7 @@ namespace BeaconTrackerApi.Controllers
             _notificationService = notificationService;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Authorize]
         [Route("/api/listar-notificacoes")]
         public IActionResult ListarNotificacoes()

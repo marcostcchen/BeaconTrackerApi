@@ -20,7 +20,7 @@ namespace BeaconTrackerApi.Controllers
             _beaconService = beaconService;
         }
         
-        [HttpPost]
+        [HttpGet]
         [Authorize]
         [Route("/api/listar-beacons")]
         public IActionResult ListarBeacons()

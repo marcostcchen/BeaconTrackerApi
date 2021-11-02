@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BeaconTrackerApi.Database.Settings;
 using BeaconTrackerApi.Model;
@@ -24,14 +23,6 @@ namespace BeaconTrackerApi.Services
             return users;
         }
 
-        public void UpdateUserRSSI(string userId, BeaconsRSSI beaconsRssi)
-        {
-            var user = _user.Find(u => u.Id == userId).FirstOrDefault();
-            user.beaconsRSSI.Add(beaconsRssi);
-            user.lastLocation = beaconsRssi;
-            _user.ReplaceOne(u => u.Id == userId, user);
-        }
-
         public void UpdateUserIdOneSignal(string userId, string userId_OneSignal)
         {
             var user = _user.Find(u => u.Id == userId).FirstOrDefault();
@@ -42,9 +33,11 @@ namespace BeaconTrackerApi.Services
         public void CreateWorkSession(string userId, WorkSession workSession)
         {
             var user = _user.Find(u => u.Id == userId).FirstOrDefault();
+            if (user.workSessions is null) user.workSessions = new List<WorkSession>();
             user.workSessions.Add(workSession);
+            _user.ReplaceOne(u => u.Id == user.Id, user);
         }
-        
+
         public List<UserWorkSession> GetWorkingSessions()
         {
             var usersWorkSessions = new List<UserWorkSession>();
@@ -53,7 +46,7 @@ namespace BeaconTrackerApi.Services
             users.ForEach(user =>
             {
                 if (user.workSessions is null) return;
-                var listWorkSessions = user.workSessions.OrderByDescending(workSession => workSession.timestamp);
+                var listWorkSessions = user.workSessions.OrderByDescending(workSession => workSession.beaconsRssi.measureTime);
 
                 var userWorkSession = new UserWorkSession()
                 {

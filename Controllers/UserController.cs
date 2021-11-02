@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
-using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
 using BeaconTrackerApi.Services;
@@ -34,23 +33,19 @@ namespace BeaconTrackerApi.Controllers
                 if (loginIn.password is null) throw new Exception("Campo password está vazio!");
 
                 var listaUsuarios = _userService.GetUsers();
-                var userFound = listaUsuarios.Find(u => u.login == loginIn.login && u.password == loginIn.password);
-                if (userFound is null) throw new Exception("Usuário não encontrado!");
-                if (userFound.active == 0) throw new Exception("Usuário inativo!");
+                var user = listaUsuarios.Find(u => u.login == loginIn.login && u.password == loginIn.password);
+                if (user is null) throw new Exception("Usuário não encontrado!");
+                if (user.active == 0) throw new Exception("Usuário inativo!");
+                if (user.role == Roles.Funcionario) _userService.UpdateUserIdOneSignal(user.Id, loginIn.userId_OneSignal);
 
-                if(userFound.role == Roles.Funcionario) _userService.UpdateUserIdOneSignal(userFound.Id, loginIn.userId_OneSignal);
 
-                var userReturn = new User()
-                {
-                    Id = userFound.Id,
-                    name = userFound.name,
-                    role = userFound.role
-                };
+                user.password = null;
+                user.role = null;
 
                 loginOut.status = Status.Sucess;
-                loginOut.token = TokenService.GenerateToken(userReturn);
+                loginOut.token = TokenService.GenerateToken(user);
                 loginOut.message = "Login efetuado com sucesso";
-                loginOut.user = userReturn;
+                loginOut.user = user;
                 return Ok(loginOut);
             }
             catch (Exception e)
@@ -88,7 +83,7 @@ namespace BeaconTrackerApi.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [Authorize]
         [Route("/api/list-working-sessions")]
         public IActionResult ListWorkingSessions()
@@ -111,7 +106,7 @@ namespace BeaconTrackerApi.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [Authorize]
         [Route("/api/listar-ultimas-localizacoes")]
         public IActionResult ListarUltimasLocalizacoes()
@@ -128,14 +123,22 @@ namespace BeaconTrackerApi.Controllers
                     user.active = null;
                     user.login = null;
                     user.role = null;
-                    user.beaconsRSSI = null;
-                });
+                    user.userId_OneSignal = null;
 
-                users = users.OrderByDescending(user => user.lastLocation.regionName).ToList();
+                    if(user.workSessions != null)
+                    {
+                        var latestWorkSessionDateTime = user.workSessions.Max(session => session.beaconsRssi.measureTime);
+                        var latestWorkSession = user.workSessions.Find(workSession => workSession.beaconsRssi.measureTime == latestWorkSessionDateTime);
+                        user.workSessions = new List<WorkSession> { latestWorkSession };
+                    } else
+                    {
+                        user.workSessions = new List<WorkSession>();
+                    }
+                });
 
                 listarUsuariosOut.listUsuarios = users;
                 listarUsuariosOut.status = Status.Sucess;
-                listarUsuariosOut.message = "Listagem de informacoes da regiao com sucesso";
+                listarUsuariosOut.message = "Listagem de ultima localização com sucesso";
                 return Ok(listarUsuariosOut);
             }
             catch (Exception e)

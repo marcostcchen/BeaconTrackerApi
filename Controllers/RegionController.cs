@@ -19,39 +19,10 @@ namespace BeaconTrackerApi.Controllers
         {
             _regionService = regionService;
         }
-
-        [Authorize]
-        [Route("/api/atualizar-map-location")]
-        [HttpPost]
-        public IActionResult AtualizarMapLocation([FromBody] MapLocationIn mapLocationIn)
-        {
-            var mapLocationOut = new MapLocationOut();
-
-            try
-            {
-                if (mapLocationIn.idRegion is null) throw new Exception("Faltam parametros! idRegion");
-                if (mapLocationIn.beaconsRssi is null) throw new Exception("Faltam parametros! beaconsRssi");
-
-                var idRegion = mapLocationIn.idRegion;
-                var beaconRssi = mapLocationIn.beaconsRssi;
-                _regionService.UpdateLocationRSSI(idRegion, beaconRssi);
-                
-                mapLocationOut.status = Status.Sucess;
-                mapLocationOut.message = "Atualizacao efetuado com sucesso!";
-                return Ok(mapLocationOut);
-            }
-            catch (Exception e)
-            {
-                mapLocationOut.status = Status.Error;
-                mapLocationOut.message = e.Message;
-                return Ok(mapLocationOut);
-            }
-        }
-
-
+        
         [Authorize]
         [Route("/api/listar-regions-map")]
-        [HttpPost]
+        [HttpGet]
         public IActionResult ListarRegions()
         {
             var listarRegionsOut = new ListarRegionsOut();
