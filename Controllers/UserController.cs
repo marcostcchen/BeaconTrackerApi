@@ -115,7 +115,7 @@ namespace BeaconTrackerApi.Controllers
 
             try
             {
-                var users = _userService.GetUsers();
+                var users = _userService.GetFuncionarios();
 
                 users.ForEach(user =>
                 {
@@ -123,18 +123,24 @@ namespace BeaconTrackerApi.Controllers
                     user.active = null;
                     user.login = null;
                     user.role = null;
-                    user.userId_OneSignal = null;
 
-                    if(user.workSessions != null)
+                    if (user.workSessions != null)
                     {
                         var latestWorkSessionDateTime = user.workSessions.Max(session => session.measureTime);
                         var latestWorkSession = user.workSessions.Find(workSession => workSession.measureTime == latestWorkSessionDateTime);
                         user.workSessions = new List<WorkSession> { latestWorkSession };
-                    } else
+                    }
+                    else
                     {
                         user.workSessions = new List<WorkSession>();
                     }
                 });
+
+                //ordenar pelo WorkingStatus
+                users = users
+                    .OrderBy(u => u.workSessions.Count > 0 && u.workSessions.FirstOrDefault().status == WorkingStatus.Working)
+                    .ThenBy(u => u.workSessions.Count > 0 && u.workSessions.FirstOrDefault().status == WorkingStatus.Resting)
+                    .ToList(); 
 
                 listarUsuariosOut.listUsuarios = users;
                 listarUsuariosOut.status = Status.Sucess;

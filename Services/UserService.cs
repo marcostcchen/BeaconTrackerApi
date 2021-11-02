@@ -23,6 +23,12 @@ namespace BeaconTrackerApi.Services
             return users;
         }
 
+        public List<User> GetFuncionarios()
+        {
+            var users = _user.Find(user => user.role == Enum.Roles.Funcionario).ToList();
+            return users;
+        }
+
         public void UpdateUserIdOneSignal(string userId, string userId_OneSignal)
         {
             var user = _user.Find(u => u.Id == userId).FirstOrDefault();
