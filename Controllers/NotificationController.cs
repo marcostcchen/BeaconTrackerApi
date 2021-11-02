@@ -62,7 +62,7 @@ namespace BeaconTrackerApi.Controllers
                 request.KeepAlive = true;
                 request.Method = "POST";
                 request.ContentType = "application/json; charset=utf-8";
-                request.Headers.Add("authorization", "Basic YmM4ZDVjZDAtOTM1YS00ZjJlLWI3OTMtZjUyMWYxNjcxMWRm");
+                request.Headers.Add("authorization", "Basic MTI5ZDA3NGMtNmMyMS00NTViLWJjZmYtZmNlNzJlZTI1MjU0");
 
                 var obj = new
                 {
