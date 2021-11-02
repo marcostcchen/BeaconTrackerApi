@@ -38,7 +38,6 @@ namespace BeaconTrackerApi.Controllers
                 if (user.active == 0) throw new Exception("Usuário inativo!");
                 if (user.role == Roles.Funcionario) _userService.UpdateUserIdOneSignal(user.Id, loginIn.userId_OneSignal);
 
-
                 user.password = null;
                 user.role = null;
 
@@ -127,8 +126,8 @@ namespace BeaconTrackerApi.Controllers
 
                     if(user.workSessions != null)
                     {
-                        var latestWorkSessionDateTime = user.workSessions.Max(session => session.beaconsRssi.measureTime);
-                        var latestWorkSession = user.workSessions.Find(workSession => workSession.beaconsRssi.measureTime == latestWorkSessionDateTime);
+                        var latestWorkSessionDateTime = user.workSessions.Max(session => session.measureTime);
+                        var latestWorkSession = user.workSessions.Find(workSession => workSession.measureTime == latestWorkSessionDateTime);
                         user.workSessions = new List<WorkSession> { latestWorkSession };
                     } else
                     {

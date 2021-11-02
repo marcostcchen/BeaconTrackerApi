@@ -46,7 +46,7 @@ namespace BeaconTrackerApi.Services
             users.ForEach(user =>
             {
                 if (user.workSessions is null) return;
-                var listWorkSessions = user.workSessions.OrderByDescending(workSession => workSession.beaconsRssi.measureTime);
+                var listWorkSessions = user.workSessions.OrderByDescending(workSession => workSession.measureTime);
 
                 var userWorkSession = new UserWorkSession()
                 {

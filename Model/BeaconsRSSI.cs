@@ -8,6 +8,6 @@ namespace BeaconTrackerApi.Model
         public int RSSIBeaconId1 { get; set; }
         public int RSSIBeaconId2 { get; set; }
         public int RSSIBeaconId3 { get; set; }
-        public DateTime measureTime { get; set; }
+        public DateTime? measureTime { get; set; }
     }
 }
