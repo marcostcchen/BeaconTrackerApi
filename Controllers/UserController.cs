@@ -68,6 +68,7 @@ namespace BeaconTrackerApi.Controllers
 
                 var userId = createWorkSessionIn.userId;
                 var workSession = createWorkSessionIn.workSession;
+                workSession.beaconsRssi.measureTime = workSession.measureTime;
 
                 _userService.CreateWorkSession(userId, workSession);
                 startWorkingOut.status = Status.Sucess;
