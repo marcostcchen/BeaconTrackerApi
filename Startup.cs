@@ -1,5 +1,5 @@
 using System.Text;
-using BeaconTrackerApi.Database.Settings;
+using BeaconTrackerApi.Model.Settings;
 using BeaconTrackerApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -53,7 +53,10 @@ namespace BeaconTrackerApi
             // requires using Microsoft.Extensions.Options
             services.Configure<MongoCollectionSettings>(Configuration.GetSection(nameof(MongoCollectionSettings)));
             services.AddSingleton<IMongoCollectionSettings>(sp => sp.GetRequiredService<IOptions<MongoCollectionSettings>>().Value);
-            
+
+            services.Configure<OneSignalSettings>(Configuration.GetSection(nameof(OneSignalSettings)));
+            services.AddSingleton<IOneSignalSettings>(sp => sp.GetRequiredService<IOptions<OneSignalSettings>>().Value);
+
             services.AddSingleton<UserService>();
             services.AddSingleton<NotificationService>();
             services.AddSingleton<BeaconService>();
@@ -63,6 +66,11 @@ namespace BeaconTrackerApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(x => x
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -70,10 +78,7 @@ namespace BeaconTrackerApi
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+          
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

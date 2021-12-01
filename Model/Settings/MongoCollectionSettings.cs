@@ -1,4 +1,4 @@
-﻿namespace BeaconTrackerApi.Database.Settings
+﻿namespace BeaconTrackerApi.Model.Settings
 {
     public class MongoCollectionSettings: IMongoCollectionSettings
     {

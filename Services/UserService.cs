@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BeaconTrackerApi.Database.Settings;
 using BeaconTrackerApi.Model;
+using BeaconTrackerApi.Model.Settings;
 using MongoDB.Driver;
 
 namespace BeaconTrackerApi.Services

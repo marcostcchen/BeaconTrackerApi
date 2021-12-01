@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using BeaconTrackerApi.Database.Settings;
+﻿using System.Collections.Generic;
 using BeaconTrackerApi.Model;
+using BeaconTrackerApi.Model.Settings;
 using MongoDB.Driver;
 
 namespace BeaconTrackerApi.Services
@@ -20,14 +19,6 @@ namespace BeaconTrackerApi.Services
         public List<Region> GetRegions()
         {
             return _region.Find(r => true).ToList();
-        }
-        
-        private bool isSameLocation(BeaconsRSSI beaconsRssi, BeaconsRSSI matchBeaconsRssi)
-        {
-            return
-                 beaconsRssi.RSSIBeaconId1 == matchBeaconsRssi.RSSIBeaconId1 &&
-                 beaconsRssi.RSSIBeaconId2 == matchBeaconsRssi.RSSIBeaconId2 &&
-                 beaconsRssi.RSSIBeaconId3 == matchBeaconsRssi.RSSIBeaconId3;
         }
     }
 }

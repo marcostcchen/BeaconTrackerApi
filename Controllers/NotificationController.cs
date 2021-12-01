@@ -3,7 +3,6 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.Json;
-using BeaconTrackerApi.Database;
 using BeaconTrackerApi.Enum;
 using BeaconTrackerApi.Model;
 using BeaconTrackerApi.Services;
@@ -11,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using BeaconTrackerApi.Model.Settings;
 
 namespace BeaconTrackerApi.Controllers
 {
@@ -19,10 +19,12 @@ namespace BeaconTrackerApi.Controllers
     public class NotificationController : ControllerBase
     {
         private readonly NotificationService _notificationService;
+        private readonly OneSignalSettings _oneSignalSettings;
 
-        public NotificationController(NotificationService notificationService)
+        public NotificationController(NotificationService notificationService, OneSignalSettings oneSignalSettings)
         {
             _notificationService = notificationService;
+            _oneSignalSettings = oneSignalSettings;
         }
 
         [HttpGet]
@@ -50,6 +52,7 @@ namespace BeaconTrackerApi.Controllers
         }
 
         [HttpPost]
+        [EnableCors]
         [Authorize]
         [Route("/api/enviar-notificacao")]
         public IActionResult InserirNotificacao(InserirNotificacaoIn inserirNotificacaoIn)
@@ -58,15 +61,18 @@ namespace BeaconTrackerApi.Controllers
 
             try
             {
+                var Auth = _oneSignalSettings.Auth;
+                var AppId = _oneSignalSettings.AppId;
+
                 var request = WebRequest.Create("https://onesignal.com/api/v1/notifications") as HttpWebRequest;
                 request.KeepAlive = true;
                 request.Method = "POST";
                 request.ContentType = "application/json; charset=utf-8";
-                request.Headers.Add("authorization", "Basic MTI5ZDA3NGMtNmMyMS00NTViLWJjZmYtZmNlNzJlZTI1MjU0");
+                request.Headers.Add("authorization", Auth);
 
                 var obj = new
                 {
-                    app_id = "b3e53c7e-4779-4ec1-b23c-d2ebd098a66b",
+                    app_id = AppId,
                     include_player_ids = new string[] { inserirNotificacaoIn.userId_OneSignal },
                     data = new { description = "Enviar Notificacao" },
                     headings = new { en = inserirNotificacaoIn.titulo, pt = inserirNotificacaoIn.titulo },
