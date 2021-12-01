@@ -57,6 +57,9 @@ namespace BeaconTrackerApi
             services.Configure<OneSignalSettings>(Configuration.GetSection(nameof(OneSignalSettings)));
             services.AddSingleton<IOneSignalSettings>(sp => sp.GetRequiredService<IOptions<OneSignalSettings>>().Value);
 
+            services.Configure<TokenSettings>(Configuration.GetSection(nameof(TokenSettings)));
+            services.AddSingleton<ITokenSettings>(sp => sp.GetRequiredService<IOptions<TokenSettings>>().Value);
+
             services.AddSingleton<UserService>();
             services.AddSingleton<NotificationService>();
             services.AddSingleton<BeaconService>();

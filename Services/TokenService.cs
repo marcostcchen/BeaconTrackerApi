@@ -4,15 +4,21 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using BeaconTrackerApi.Model;
+using BeaconTrackerApi.Model.Settings;
 
 namespace BeaconTrackerApi.Services
 {
     public class TokenService
     {
+        private static TokenSettings _settings;
+        public TokenService (TokenSettings settings)
+        {
+            _settings = settings;
+        }
         public static string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+            var key = Encoding.ASCII.GetBytes(_settings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
