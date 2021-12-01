@@ -1,6 +1,6 @@
 # Beacon Tracker API
 
-.NET 5 with Swagger
+.NET 3.1 with Swagger
 
 Api URL: https://api.beacontracker.software/index.html
 
